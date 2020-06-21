@@ -1,0 +1,35 @@
+{
+  "name": "@spcy/lib.model.to-do",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "Roman Mashta",
+    "email": "roman.mashta@gmail.com",
+    "url": ""
+  },
+  "main": "src/index.ts",
+  "main:src": "src/index.ts",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "spcy:clean": "shx rm -rf dist && shx rm -rf lib",
+    "spcy:meta": "yarn tsr --includes='__tests__/**/*.ts' && yarn spcy:format",
+    "spcy:build": "yarn spcy:clean && tsc",
+    "spcy:format": "prettier --write \"{src,__tests__}/**/*.{js,ts}\"",
+    "spcy:lint": "eslint \"src/**/*.{js,ts}\"",
+    "spcy:test": "jest"
+  },
+  "devDependencies": {
+    "@spcy/lib.core.typescript-reflection": "^1.0.0",
+    "@types/jest": "^26.0.0",
+    "@types/lodash": "^4.14.155",
+    "@types/node": "^14.0.13",
+    "eslint": "^6.8.0",
+    "prettier": "^1.18.2",
+    "eslint-config-airbnb-typescript-prettier": "^2.1.1",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "shx": "^0.3.2"
+  }
+}
