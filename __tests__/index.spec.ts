@@ -1,9 +1,10 @@
-import { sayHi, sayBye } from '../src';
+import { ModelRepository } from '@spcy/lib.core.mst-model';
+import { ToDoSchema } from '../src/to-do.schema';
+import { ToDo } from '../src';
 
-test('It says Hi', () => {
-  expect(sayHi('Me')).toBe('Hi Me');
-});
-
-test('It says Bye', () => {
-  expect(sayBye('Me')).toBe('Bye Me');
+test('It creates to-do doc', () => {
+  const data: ToDo = { isDone: false, description: 'Hello' };
+  const rootModel = ModelRepository.resolve(ToDoSchema.$id!);
+  const todo = rootModel.create(data);
+  expect(todo).toEqual(data);
 });

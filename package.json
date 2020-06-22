@@ -15,7 +15,7 @@
   "scripts": {
     "spcy:clean": "shx rm -rf dist && shx rm -rf lib",
     "spcy:meta": "yarn tsr --includes='__tests__/**/*.ts' && yarn spcy:format",
-    "spcy:build": "yarn spcy:clean && tsc",
+    "spcy:build": "yarn spcy:clean && yarn spcy:meta && tsc",
     "spcy:format": "prettier --write \"{src,__tests__}/**/*.{js,ts}\"",
     "spcy:lint": "eslint --fix \"src/**/*.{js,ts}\"",
     "spcy:test": "jest"
@@ -32,5 +32,10 @@
     "jest": "^26.0.1",
     "ts-jest": "^26.1.0",
     "shx": "^0.3.2"
+  },
+  "dependencies": {
+    "@spcy/lib.core.reflection": "^1.0.0",
+    "@spcy/lib.core.mst-model": "^1.0.0",
+    "@spcy/pub.mobx-state-tree": "^3.16.0"
   }
 }
