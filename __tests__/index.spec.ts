@@ -1,3 +1,4 @@
+import '@spcy/lib.dev.tasty';
 import { ModelRepository } from '@spcy/lib.core.mst-model';
 import { getSnapshot } from '@spcy/pub.mobx-state-tree';
 import { RootStorageSchema } from '../src/to-do.schema';
@@ -13,6 +14,7 @@ test('It creates to-do doc', () => {
     ]
   };
   const todo = rootModel.create(data);
-  // console.log(getSnapshot(todo));
-  expect(todo).toEqual(data);
+  const snap = getSnapshot(todo);
+  expect(snap).toMatchTastyShot('todo');
+  expect(snap).toEqual(data);
 });
