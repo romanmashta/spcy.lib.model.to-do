@@ -1,10 +1,9 @@
 import * as r from '@spcy/lib.core.reflection';
 import * as m from './to-do.model';
 
-const PackageName = 'lib.model.to-do';
-
 const ToDoType: r.TypeInfo = {
   $id: 'ToDo',
+  $package: 'lib.model.to-do',
   type: 'object',
   required: ['isDone'],
   properties: {
@@ -16,32 +15,37 @@ const ToDoType: r.TypeInfo = {
     }
   }
 };
+
 const ToDo: r.Prototype<m.ToDo> = {
-  id: ToDoType.$id,
-  package: PackageName,
+  $ref: ToDoType.$id!,
+  $refPackage: ToDoType.$package!,
   typeInfo: ToDoType
 };
+
 const RootStorageType: r.TypeInfo = {
   $id: 'RootStorage',
+  $package: 'lib.model.to-do',
   type: 'object',
   required: ['todos'],
   properties: {
     todos: {
       type: 'array',
       items: {
-        $ref: 'ToDo'
+        $ref: 'ToDo',
+        $refPackage: 'lib.model.to-do'
       }
     }
   }
 };
+
 const RootStorage: r.Prototype<m.RootStorage> = {
-  id: RootStorageType.$id,
-  package: PackageName,
+  $ref: RootStorageType.$id!,
+  $refPackage: RootStorageType.$package!,
   typeInfo: RootStorageType
 };
 
 export const ToDoModule: r.Module = {
-  $id: PackageName,
+  $id: 'lib.model.to-do',
   $defs: {
     ToDo: ToDoType,
     RootStorage: RootStorageType
