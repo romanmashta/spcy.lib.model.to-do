@@ -10,6 +10,10 @@ exports[`It creates to-do doc 1`] = `
     {
       "isDone": false,
       "description": "Item2"
+    },
+    {
+      "isDone": false,
+      "description": "Item3"
     }
   ]
 }
