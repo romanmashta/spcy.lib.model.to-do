@@ -1,7 +1,10 @@
-import { TypeInfo, Module, SchemaRepository } from '@spcy/lib.core.reflection';
+import * as r from '@spcy/lib.core.reflection';
+import * as m from './to-do.model';
 
-export const ToDoSchema: TypeInfo = {
-  $id: '#/$defs/ToDo',
+const PackageName = 'lib.model.to-do';
+
+const ToDoType: r.TypeInfo = {
+  $id: 'ToDo',
   type: 'object',
   required: ['isDone'],
   properties: {
@@ -13,27 +16,39 @@ export const ToDoSchema: TypeInfo = {
     }
   }
 };
-
-SchemaRepository.register(ToDoSchema);
-export const RootStorageSchema: TypeInfo = {
-  $id: '#/$defs/RootStorage',
+const ToDo: r.Prototype<m.ToDo> = {
+  id: ToDoType.$id,
+  package: PackageName,
+  typeInfo: ToDoType
+};
+const RootStorageType: r.TypeInfo = {
+  $id: 'RootStorage',
   type: 'object',
   required: ['todos'],
   properties: {
     todos: {
       type: 'array',
       items: {
-        $ref: '#/$defs/ToDo'
+        $ref: 'ToDo'
       }
     }
   }
 };
+const RootStorage: r.Prototype<m.RootStorage> = {
+  id: RootStorageType.$id,
+  package: PackageName,
+  typeInfo: RootStorageType
+};
 
-SchemaRepository.register(RootStorageSchema);
-
-export const MetaSchema: Module = {
+export const ToDoModule: r.Module = {
+  $id: PackageName,
   $defs: {
-    ToDo: ToDoSchema,
-    RootStorage: RootStorageSchema
+    ToDo: ToDoType,
+    RootStorage: RootStorageType
   }
+};
+
+export const Types = {
+  ToDo,
+  RootStorage
 };

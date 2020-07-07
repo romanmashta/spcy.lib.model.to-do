@@ -1,20 +1,18 @@
 import '@spcy/lib.dev.tasty';
-import { ModelRepository } from '@spcy/lib.core.mst-model';
+import { createInstance } from '@spcy/lib.core.mst-model';
 import { getSnapshot } from '@spcy/pub.mobx-state-tree';
-import { RootStorageSchema } from '../src/to-do.schema';
-import { RootStorage } from '../src';
+import { SchemaRepository } from '@spcy/lib.core.reflection';
+import { Types as ToDoTypes } from '../src';
+
+SchemaRepository.registerTypes(ToDoTypes);
 
 test('It creates to-do doc', () => {
-  const rootModel = ModelRepository.resolve(RootStorageSchema.$id!);
-
-  const data: RootStorage = {
+  const todo = createInstance(ToDoTypes.RootStorage, {
     todos: [
       { isDone: false, description: 'Item1' },
       { isDone: false, description: 'Item2' }
     ]
-  };
-  const todo = rootModel.create(data);
+  });
   const snap = getSnapshot(todo);
   expect(snap).toMatchTastyShot('todo');
-  expect(snap).toEqual(data);
 });
