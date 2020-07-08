@@ -9,6 +9,7 @@ module.exports = {
   },
   ignorePatterns: ['dist', '*.config.js', '.*.js'],
   rules: {
+    'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['self'] }],
     'import/prefer-default-export': 'off',
     'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }]
   }

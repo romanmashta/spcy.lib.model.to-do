@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It reacts on changes with mobx 1`] = `
+{
+  "todos": [
+    {
+      "isDone": true,
+      "description": "Item 1"
+    },
+    {
+      "isDone": true,
+      "description": "Item 2"
+    }
+  ]
+}
+`;
