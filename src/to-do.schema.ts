@@ -17,8 +17,7 @@ const ToDoType: r.TypeInfo = {
 };
 
 const ToDo: r.Prototype<m.ToDo> = {
-  $ref: ToDoType.$id!,
-  $refPackage: ToDoType.$package!,
+  ref: { $ref: ToDoType.$id!, $refPackage: ToDoType.$package! },
   typeInfo: ToDoType
 };
 
@@ -39,8 +38,7 @@ const RootStorageType: r.TypeInfo = {
 };
 
 const RootStorage: r.Prototype<m.RootStorage> = {
-  $ref: RootStorageType.$id!,
-  $refPackage: RootStorageType.$package!,
+  ref: { $ref: RootStorageType.$id!, $refPackage: RootStorageType.$package! },
   typeInfo: RootStorageType
 };
 

@@ -2,6 +2,7 @@ import '@spcy/lib.dev.tasty';
 import { createInstance, getData } from '@spcy/lib.core.mst-model';
 import { SchemaRepository } from '@spcy/lib.core.reflection';
 import { autorun } from 'mobx';
+import * as core from '@spcy/lib.model.core';
 import { Types as ToDoTypes } from '../src';
 
 SchemaRepository.registerTypes(ToDoTypes);
@@ -25,7 +26,8 @@ test('It reacts on changes with mobx', () => {
 
   const consoleLog = jest.fn();
   autorun(() => {
-    console.log(getData(tasks));
+    const dummy = getData(tasks);
+    // console.log(getData(tasks));
     consoleLog();
   });
 
@@ -48,3 +50,5 @@ test('It reacts on changes with mobx', () => {
   expect(consoleLog).toHaveBeenCalledTimes(5);
   expect(getData(tasks)).toMatchTastyShot('modified-todo');
 });
+
+test('It reacts seeds', () => {});
