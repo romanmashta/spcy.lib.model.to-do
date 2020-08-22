@@ -2,7 +2,7 @@ import '@spcy/lib.dev.tasty';
 import { createInstance, getData } from '@spcy/lib.core.mst-model';
 import { SchemaRepository } from '@spcy/lib.core.reflection';
 import { autorun } from 'mobx';
-import * as core from '@spcy/lib.model.core';
+import * as core from '@spcy/lib.standard.core';
 import { Types as ToDoTypes } from '../src';
 
 SchemaRepository.registerTypes(ToDoTypes);
